@@ -32,7 +32,6 @@ public class PizzaController {
 			elencoPizze= pizzaRepository.findAll();
 		}
 		model.addAttribute("elencoPizze" , elencoPizze);
-		keyword="";
 		return "indexPizze";
 	}
 	
