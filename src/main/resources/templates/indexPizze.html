@@ -2,11 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <div th:replace="~{fragments :: head}"></div>
-<title>MyBestOfTheYear</title>
+<title>Pizze</title>
 </head>
 <body>
+	<img style="width: 100%; height: 100vh;" th:src="@{/img/pizza_sfondo.jpg}">
+	<form action="/pizze" style="column-gap: 10px;" class="mainForm">
+		<label class="p-2 text-dark" style="background-color: wheat; border-radius: 5px;">Ricerca:</label>
+		<input type="text" name="keyword" />
+		<input type="submit" value="Submit" class="btn btn-success" />
+	</form>
 	<div th:if="${elencoPizze.size()>0}">
-		<img style="width: 100%; height: 100vh;" th:src="@{/img/pizza_sfondo.jpg}">
 		<div style="position: absolute; top: 50%; width: 100%; transform: translate(0,-50%);">
 			<h1 style="background-color: wheat;width: 80%;border-radius: 25px;" class="text-success text-center p-2 mx-auto">Le Nostre Pizze</h1>
 		<table class="w-75 table table-dark mx-auto table-striped table-hover mt-5 table-bordered border-success">
@@ -21,3 +26,14 @@
 <div th:replace="~{fragments :: script}"></div>
 </body>
 </html>
+<style>
+	form{
+		display: flex;
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    transform: translate(50%);
+    right: 50%;
+    justify-content: center;
+	}
+</style>

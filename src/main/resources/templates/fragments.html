@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
-</head>
 <body>
 <th:block th:fragment="head">
     <meta charset="utf-8">
@@ -16,13 +13,14 @@
 	    <th scope="col">prezzo</th>
 	</tr>
 </thead>
+
 <tbody th:fragment="table_body_pizza(elenco)">
 	    <tr th:each="elemento : ${elenco}" class="text-capitalize">
-	      <td th:text="${elemento.getNome()}"></td>
-	      <td th:text="${elemento.getDescrizione()}"></td>
-	      <td th:text="${elemento.getPrezzo()}"></td>
+	      	<td><a  class="text-white" th:href="@{'pizze/'+ ${elemento.getId()}}" th:text="${elemento.getNome()}"></a></td>
+	      	<td th:text="${elemento.getDescrizione()}"></td>
+	      	<td th:text="${elemento.getPrezzo()}"></td>
 	    </tr>
-	  </tbody>
+</tbody>
 <div th:fragment="script">
 	<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
 </div>
