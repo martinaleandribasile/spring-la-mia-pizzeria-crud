@@ -25,13 +25,14 @@ public class Pizza {
 	@NotNull(message="Nome: campo obbligatorio")
 	@NotEmpty(message = "Nome: campo obbligatorio")
 	@Size(min=3, max=100, message="il nome deve avere tra i 3 e i 100 caratteri")
+//	@Column(columnDefinition = "CHAR(100)")
 	private String nome;
 	@NotNull(message="Descrizione: campo obbligatorio")
 	@NotEmpty(message = "Descrizione: campo obbligatorio")
 	@Size(min=3, max=500, message="descrizione deve avere tra i 3 e i 500 caratteri")
 	private String descrizione;
 	@NotNull(message="Prezzo: campo obbligatorio")
-	@DecimalMin(value = "0.0", inclusive = false)
+	@DecimalMin(value = "0.0", inclusive = false, message="Il prezzo deve essere superiore a 0")
     @Digits(integer=3, fraction=2)
 	private BigDecimal prezzo;
 	private String foto;
