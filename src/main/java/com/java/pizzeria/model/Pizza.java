@@ -1,14 +1,15 @@
 package com.java.pizzeria.model;
-
 import java.math.BigDecimal;
 
-import io.micrometer.common.lang.NonNull;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table()
@@ -20,12 +21,13 @@ public class Pizza {
 	@Id               // INDICA LA NOSTRA CHIAVE PRIMARIA
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Integer id;
-	@NonNull
-	@Column(nullable = false)
+	@NotNull(message="Nome: campo obbligatorio")
+	@NotEmpty(message = "Nome: campo obbligatorio")
 	private String nome;
 	private String descrizione;
-	@NonNull
-	@Column(nullable = false)
+	@NotNull(message="Prezzo: campo obbligatorio")
+	@DecimalMin(value = "0.0", inclusive = false)
+    @Digits(integer=3, fraction=2)
 	private BigDecimal prezzo;
 	private String foto;
 	public String getNome() {
@@ -43,7 +45,7 @@ public class Pizza {
 	public BigDecimal getPrezzo() {
 		return prezzo;
 	}
-	public void setPrezzo(BigDecimal prezzo) {
+	public void setPrezzo( BigDecimal prezzo) {
 		this.prezzo = prezzo;
 	}
 	public String getFoto() {

@@ -8,17 +8,15 @@
 </th:block>
 <thead th:fragment="table_head">
 	<tr class="text-uppercase">
+	    <th scope="col">id</th>
 	    <th scope="col">nome</th>
-	    <th scope="col">descrizione</th>
-	    <th scope="col">prezzo</th>
 	</tr>
 </thead>
 
 <tbody th:fragment="table_body_pizza(elenco)">
 	    <tr th:each="elemento : ${elenco}" class="text-capitalize">
+	      	<td th:text="${elemento.getId()}"></td>
 	      	<td><a  class="text-white" th:href="@{'pizze/'+ ${elemento.getId()}}" th:text="${elemento.getNome()}"></a></td>
-	      	<td th:text="${elemento.getDescrizione()}"></td>
-	      	<td th:text="${elemento.getPrezzo()}"></td>
 	    </tr>
 </tbody>
 <div th:fragment="script">
